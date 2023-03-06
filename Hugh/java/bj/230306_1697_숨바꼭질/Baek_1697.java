@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 public class Baek_1697 {
     static int n;
     static int k;
+
     static int visited[] = new int[100001];
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
