@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Main1697 {
 	static int N, K;
-	static boolean[] visited; // °¥ ÇÊ¿ä¾ø´Â °÷(¹æ¹®ÇÑ °÷)À» Ç¥½ÃÇØ¾ß ÇÔ
+	static boolean[] visited; // ê°ˆ í•„ìš”ì—†ëŠ” ê³³(ë°©ë¬¸í•œ ê³³)ì„ í‘œì‹œí•´ì•¼ í•¨
 
 	public static void main(String args[]) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
