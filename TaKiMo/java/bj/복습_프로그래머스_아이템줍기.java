@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Programmers¾ÆÀÌÅÛÁİ±â {
+public class ProgrammersÂ¾Ã†Ã€ÃŒÃ…Ã›ÃÃÂ±Ã¢ {
 	static int[][] map;
 	static boolean[][] visited;
 
