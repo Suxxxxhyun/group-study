@@ -17,14 +17,10 @@
 코딩테스트 대비 코드 공유 레포입니다.
 
 ## 2. 진도
-\begin{table}[]
-\begin{tabular}{cllcl}
-\multicolumn{5}{c}{1주차}                                         \\
-\multicolumn{3}{c}{Day}          & \multicolumn{2}{c}{Category} \\
-\multicolumn{3}{c}{Mon,Tue}      & \multicolumn{2}{c}{DFS/BFS}  \\
-\multicolumn{3}{c}{Wen$\sim$Fri} & \multicolumn{2}{c}{Random}  
-\end{tabular}
-\end{table}
+|   Day   | Category |
+|---------|---------|
+| Mon,Tue |  DFS/BFS |
+| Wen~Fri |  Random  |
 
 ## 3. 사용방법
 개인폴더\언어\문제폴더\소스파일 형식으로 업로드해주시면 됩니다.
