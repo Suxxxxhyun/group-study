@@ -1,0 +1,71 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	static int min, cnt;
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+
+		int N = Integer.parseInt(st.nextToken());
+		int K = Integer.parseInt(st.nextToken());
+
+		min = Integer.MAX_VALUE;
+		cnt = 1;
+
+		if (N > K) {
+			System.out.println(N - K);
+			System.out.println(1);
+		} else {
+			bfs(N, K);
+			System.out.println(min);
+			System.out.println(cnt);
+		}
+
+	}
+
+	private static void bfs(int N, int K) {
+		Queue<Point> q = new LinkedList<>();
+		boolean[] visited = new boolean[100001];
+		int time = 0;
+
+		q.offer(new Point(N, time));
+		visited[N] = true;
+
+		while (!q.isEmpty()) {
+			Point now = q.poll();
+			visited[now.idx] = true;
+
+			if (now.idx == K) {
+				if (min > now.time)
+					min = now.time;
+				else if (min == now.time)
+					cnt++;
+				continue;
+			}
+			
+			int minus = now.idx - 1;
+			int plus = now.idx + 1;
+			int prod = now.idx * 2;
+
+			if(0 <= minus && !visited[minus]) 
+				q.offer(new Point(minus, now.time + 1));
+			if(plus <= 100000 && !visited[plus])
+				q.offer(new Point(plus, now.time + 1));
+			if(prod <= 100000 && !visited[prod])
+				q.offer(new Point(prod, now.time + 1));
+		}
+	}
+
+	static class Point {
+		int idx;
+		int time;
+
+		public Point(int idx, int time) {
+			this.idx = idx;
+			this.time = time;
+		}
+	}
+}
