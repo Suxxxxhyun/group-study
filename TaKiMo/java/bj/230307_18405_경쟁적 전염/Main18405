@@ -1,0 +1,81 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	static int N, K, S, X, Y;
+	static int[][] map;
+
+	public static void main(String args[]) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+
+		N = Integer.parseInt(st.nextToken());
+		K = Integer.parseInt(st.nextToken());
+
+		map = new int[N + 1][N  + 1];
+
+		for (int i = 1; i <= N; i++) {
+			st = new StringTokenizer(br.readLine());
+			for (int j = 1; j <= N; j++) {
+				map[i][j] = Integer.parseInt(st.nextToken());
+			}
+		}
+
+		st = new StringTokenizer(br.readLine());
+		S = Integer.parseInt(st.nextToken());
+		X = Integer.parseInt(st.nextToken());
+		Y = Integer.parseInt(st.nextToken());
+
+		loop:
+		for (int i = 1; i <= S; i++) {
+			for (int j = 1; j <= K; j++) {
+				bfs(j);
+				if (0 != map[X][Y])
+					break loop;
+			}
+		}
+
+		System.out.println(map[X][Y]);
+	}
+
+	private static void bfs(int virus) {
+		Queue<Node> q = new LinkedList<>();
+		int[] dx = { -1, 1, 0, 0 };
+		int[] dy = { 0, 0, -1, 1 };
+
+		for (int i = 1; i <= N; i++) {
+			for (int j = 1; j <= N; j++) {
+				if (virus == map[i][j])
+					q.offer(new Node(i, j));
+			}
+		}
+
+		while (!q.isEmpty()) {
+			Node now = q.poll();
+
+			for (int i = 0; i < 4; i++) {
+				int x = now.x + dx[i];
+				int y = now.y + dy[i];
+
+				if (0 >= x || x > N || 0 >= y || y > N)
+					continue;
+
+				// 옮길 칸에 다른 바이러스가 있는 경우는 패스
+				if (0 != map[x][y])
+					continue;
+
+				map[x][y] = virus;
+			}
+		}
+	}
+
+	static class Node {
+		int x;
+		int y;
+
+		public Node(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+	}
+}
