@@ -17,10 +17,13 @@
 코딩테스트 대비 코드 공유 레포입니다.
 
 ## 2. 진도
-|   Day   | Category |
-|---------|---------|
-| Mon,Tue |  DFS/BFS |
-| Wen~Fri |  Random  |
+- 1주차
+    
+    
+    | Day | Category |
+    | --- | --- |
+    | Mon,Tue | DFS/BFS |
+    | Wen~Fri | Random |
 
 ## 3. 사용방법
 개인폴더\언어\문제폴더\소스파일 형식으로 업로드해주시면 됩니다.
