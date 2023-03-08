@@ -1,0 +1,35 @@
+import java.util.*;
+import java.io.*;
+
+class Solution {
+   public int solution(int cacheSize, String[] cities) {
+		// cache hit = 큐에 중복 원소 존재
+		// cache miss = 큐에 중복 원소 없음
+		int len = cities.length;
+		if(cacheSize == 0)
+			return len * 5;
+		
+		Queue<String> cache = new LinkedList<>();
+		int time = 0;
+		
+		for(int i = 0; i < len; i++) {
+			String str = cities[i].toUpperCase();
+			
+			// cache hit
+			if(cache.remove(str)) {
+				cache.add(str);
+				time += 1;
+			}
+			// cache miss
+			else {
+				if(cache.size() >= cacheSize) {
+					cache.remove();
+				}
+				cache.offer(str);
+				time += 5;
+			}
+		}
+			
+		return time;
+	}
+}
