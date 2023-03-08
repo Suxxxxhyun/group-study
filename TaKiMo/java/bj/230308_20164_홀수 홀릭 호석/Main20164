@@ -1,0 +1,56 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	static int n;
+	static int min, max;
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		n = Integer.parseInt(br.readLine());
+		max = 0;
+		min = Integer.MAX_VALUE;
+
+		getNew(n, getOdd(n));
+		System.out.println(max + " " + min);
+	}
+
+	private static void getNew(int n, int cnt) {
+		// 한 자리
+		if (n < 10) {
+			min = Math.min(min, cnt);
+			max = Math.max(max, cnt);
+			return;
+		}
+		// 두 자리
+		if (n < 100) {
+			int sum = (n / 10) + (n % 10);
+			getNew(sum, getOdd(sum) + cnt);
+		}
+		// 세 자리
+		String str = Integer.toString(n);
+		int len = str.length();
+
+		for (int i = 0; i < len - 2; i++) {
+			for (int j = i + 1; j < len - 1; j++) {
+				String tmp1 = str.substring(0, i + 1);
+				String tmp2 = str.substring(i + 1, j + 1);
+				String tmp3 = str.substring(j + 1, len);
+
+				int sum = Integer.parseInt(tmp1) + Integer.parseInt(tmp2) + Integer.parseInt(tmp3);
+				getNew(sum, getOdd(sum) + cnt);
+			}
+		}
+	}
+
+	private static int getOdd(int tmp) {
+		int cnt = 0;
+		while (tmp > 0) {
+			int digit = tmp % 10;
+			if (1 == digit % 2)
+				cnt++;
+			tmp = tmp / 10;
+		}
+		return cnt;
+	}
+}
