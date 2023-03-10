@@ -6,12 +6,9 @@
 import java.util.Scanner;
 
 public class Main10430 {
-	public Main10430() {
-	}
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int C = false;
 		int A = sc.nextInt();
 		int B = sc.nextInt();
 		int C = sc.nextInt();

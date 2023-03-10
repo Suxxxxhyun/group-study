@@ -9,7 +9,6 @@ public class Main2588 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int B = false;
 		int A = sc.nextInt();
 		int B = sc.nextInt();
 		int[] arr = new int[3];

@@ -1,5 +1,5 @@
 
-public class Main10171 {
+public class Main10172 {
 
 	public static void main(String[] args) {
 		System.out.println("|\\_/|");
