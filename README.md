@@ -25,6 +25,13 @@
     | Mon,Tue | DFS/BFS |
     | Wen,Fri | 구현 |
     | Thur | KAKAO 인턴쉽 |
+   
+- 2주차
+    | Day | Category |
+    | --- | --- |
+    | Mon,Tue | Tree |
+    | Wen,Fri | 구현 |
+    | Thur | KAKAO 인턴쉽 |
 
 ## 3. 사용방법
 개인폴더\언어\문제폴더\소스파일 형식으로 업로드해주시면 됩니다.
