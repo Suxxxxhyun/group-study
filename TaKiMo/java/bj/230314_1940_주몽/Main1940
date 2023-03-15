@@ -1,0 +1,43 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st;
+
+		int N = Integer.parseInt(br.readLine());
+		int M = Integer.parseInt(br.readLine());
+		int[] meterial = new int[N];
+
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < N; i++) {
+			meterial[i] = Integer.parseInt(st.nextToken());
+		}
+
+		Arrays.sort(meterial);
+
+		int begin = 0;
+		int end = meterial.length - 1;
+		int cnt = 0;
+
+		while (begin < end) {
+			int tmp = meterial[begin] + meterial[end];
+
+			if (tmp == M) {
+				cnt++;
+				begin++;
+				end--;
+			} else if (tmp < M) {
+				begin++;
+			}
+
+			else {
+				end--;
+			}
+		}
+		
+		System.out.println(cnt);
+	}
+}
