@@ -1,0 +1,46 @@
+import java.util.*;
+import java.io.*;
+
+public class Main1253 {
+	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		int N = Integer.parseInt(br.readLine());
+		int res = 0;
+		st = new StringTokenizer(br.readLine());
+		int[] arr = new int[N];
+		
+		for(int i = 0; i < N; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		Arrays.sort(arr);
+		
+		for(int i = 0; i < N; i++) {
+			int begin = 0;
+			int end = arr.length - 1;
+			
+			while(true) {
+				
+				if(i == begin)
+					begin++;
+				else if(i == end)
+					end--;
+				
+				if(begin >= end)
+					break;
+				
+				if(arr[begin] + arr[end] > arr[i]) {
+					end--;
+				} else if(arr[begin] + arr[end] < arr[i]) {
+					begin++;
+				} else {
+					res++;
+					break;
+				}
+			}
+		}
+		
+		System.out.println(res);
+	}
+}
