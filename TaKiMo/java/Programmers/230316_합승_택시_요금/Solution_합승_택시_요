@@ -1,0 +1,103 @@
+import java.util.*;
+import java.io.*;
+
+public class Solution_합승_택시_요금 {
+	public static void main(String[] args) {
+		int n = 8;
+		int k = 2;
+		String[] cmd = { "D 2", "C", "U 3", "C", "D 4", "C", "U 2", "Z", "Z" };
+
+		solution(n, k, cmd);
+
+	}
+
+	static Row[] rows;
+	static Queue<Integer> q;
+	static int now, len;
+
+	public static String solution(int n, int k, String[] cmd) {
+		StringBuffer sb = new StringBuffer();
+		String answer = "";
+		now = k;
+		len = cmd.length;
+		System.out.println("now: " + now);
+		rows = new Row[n];
+		q = new LinkedList<Integer>();
+
+		for (int i = 0; i < n; i++) {
+			rows[i] = new Row(i, true);
+		}
+		for (int i = 0; i < len; i++) {
+			char order = cmd[i].charAt(0);
+			System.out.println("order: " + order);
+			if ('D' == order) {
+				int num = cmd[i].charAt(2) - 48;
+				moveDown(num, now);
+			}
+
+			else if ('U' == order) {
+				int num = cmd[i].charAt(2) - 48;
+				moveUp(num, now);
+			}
+
+			else if ('C' == order) {
+				toTrash(now);
+			}
+
+			else if ('Z' == order) {
+				recover();
+			}
+			System.out.println("---------------------");
+			System.out.println("now: " + now);
+			for(int j = 0; j < len; j++) {
+				System.out.println(rows[j].be);
+			}
+			System.out.println("=====================");
+		}
+
+		for (int i = 0; i < n; i++) {
+			if (rows[i].be)
+				sb.append('O');
+			else
+				sb.append('X');
+		}
+
+		return answer = sb.toString();
+	}
+
+	private static void moveDown(int num, int pos) {
+		now = pos + num;
+	}
+
+	private static void moveUp(int num, int pos) {
+		now = pos - num;
+	}
+
+	private static void toTrash(int pos) {
+		q.offer(pos);
+		rows[pos].be = false;
+		System.out.println("rows[" + pos + "].be: " + rows[pos].be);
+		now = pos + 1;
+		// 범위를 넘을 경우, 맨 아래 칸으로 인덱스 조정
+		if (now >= len - 1)
+			now = len - 1;
+	}
+
+	private static void recover() {
+		int idx = q.poll();
+		rows[idx].be = true;
+		// now보다 작은 인덱스가 복구될 경우, now의 위치가 1칸 밀림 
+		if (idx > now)
+			now++;
+	}
+}
+
+class Row {
+	int idx;
+	boolean be;
+
+	public Row(int idx, boolean be) {
+		this.idx = idx;
+		this.be = be;
+	}
+}
