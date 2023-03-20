@@ -1,4 +1,4 @@
-class Solution_0316 {
+class Solution {
     public int solution(int K, String[] user_scores){
         int answer = 0; // 랭킹이 몇번바뀌는지 count
         // 페이지당 k명씩 닉네임 보여줌 
