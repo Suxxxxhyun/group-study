@@ -1,0 +1,48 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	static ArrayList<Integer>[] graph;
+	static boolean[] visited;
+	static int answer;
+
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		int n = Integer.parseInt(br.readLine());
+
+		graph = new ArrayList[n + 1];
+		visited = new boolean[n + 1];
+
+		for (int i = 0; i <= n; i++) {
+			graph[i] = new ArrayList<>();
+		}
+
+		for (int i = 0; i < n - 1; i++) {
+			st = new StringTokenizer(br.readLine());
+			int a = Integer.parseInt(st.nextToken());
+			int b = Integer.parseInt(st.nextToken());
+
+			graph[a].add(b);
+			graph[b].add(a);
+		}
+
+		answer = 0;
+		dfs(1, 0);
+		String isWin = ((answer % 2 == 0) ? "No" : "Yes");
+		System.out.println(isWin);
+	}
+
+	private static void dfs(int now, int cnt) {
+		visited[now] = true;
+
+		for (int i : graph[now]) {
+			if (!visited[i]) {
+				dfs(i, cnt + 1);
+			}
+		}
+
+		if (now != 1 && graph[now].size() == 1)
+			answer += cnt;
+	}
+}
