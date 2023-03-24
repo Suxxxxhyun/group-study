@@ -1,0 +1,50 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	static int[] nodes;
+	static boolean[] visited;
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		int T = Integer.parseInt(br.readLine());
+
+		for (int i = 0; i < T; i++) {
+			int N = Integer.parseInt(br.readLine());
+			nodes = new int[N + 1];
+
+			for (int j = 0; j < N - 1; j++) {
+				st = new StringTokenizer(br.readLine());
+				int a = Integer.parseInt(st.nextToken());
+				int b = Integer.parseInt(st.nextToken());
+				nodes[b] = a;
+			}
+
+			st = new StringTokenizer(br.readLine());
+			int point1 = Integer.parseInt(st.nextToken());
+			int point2 = Integer.parseInt(st.nextToken());
+
+			// dfs돌면서 point1의 조상 체크 -> p1
+			// dfs돌면서 point2의 조상 체크하면서 point1과 겹치는 조상 중 첫번째 반환 -> p2
+			visited = new boolean[N + 1];
+			visited[point1] = true;
+			visited[point2] = true;
+			dfs(point1);
+			dfs(point2);
+		}
+	}
+
+	private static void dfs(int point) {
+		if (0 == nodes[point])
+			return;
+
+		if (!visited[nodes[point]]) {
+			visited[nodes[point]] = true;
+			dfs(nodes[point]);
+		} else {
+			System.out.println(nodes[point]);
+			return;
+		}
+	}
+}
