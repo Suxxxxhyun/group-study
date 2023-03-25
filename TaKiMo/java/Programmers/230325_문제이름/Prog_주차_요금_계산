@@ -1,0 +1,81 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] fees, String[] records) {
+        int[] answer = {};
+		Map<String, String> map = new HashMap<>();
+		Map<String, Integer> feeMap = new HashMap<>();
+
+		int minTime = fees[0];
+		int minFee = fees[1];
+		int unitTime = fees[2];
+		int unitFee = fees[3];
+
+		for (int i = 0; i < records.length; i++) {
+			feeMap.put(records[i].split(" ")[1], 0);
+		}
+
+		for (int i = 0; i < records.length; i++) {
+			String[] infos = records[i].split(" ");
+			String time = infos[0];
+			String num = infos[1];
+			String record = infos[2];
+
+			// 출차 시
+			if (map.containsKey(num)) {
+				String inTime = map.remove(num);
+				String outTime = time;
+				int spended = getTime(inTime, outTime);
+
+				feeMap.replace(num, feeMap.get(num) + spended);
+			}
+			// 입차 시
+			else {
+				// 차 번호, 입차 시간
+				map.put(num, time);
+			}
+		}
+
+		for (String key : map.keySet()) {
+			String[] inTime = map.get(key).split(":");
+
+			int hour = 23 - Integer.parseInt(inTime[0]);
+			int min = 59 - Integer.parseInt(inTime[1]);
+
+			feeMap.replace(key, feeMap.get(key) + (hour * 60 + min));
+		}
+
+		List<Map.Entry<String, Integer>> list = new ArrayList(feeMap.entrySet());
+		Collections.sort(list, (o1, o2) -> {
+			return Integer.parseInt(o1.getKey()) > Integer.parseInt(o2.getKey()) ? 1
+					: Integer.parseInt(o1.getKey()) < Integer.parseInt(o2.getKey()) ? -1 : 0;
+
+		});
+
+		answer = new int[list.size()];
+
+		for (int i = 0; i < answer.length; i++) {
+			if (list.get(i).getValue() > minTime) {
+				answer[i] = minFee + (int) Math.ceil((list.get(i).getValue() - minTime) / (double) unitTime) * unitFee;
+			} else {
+				answer[i] = minFee;
+			}
+		}
+
+		return answer;
+	}
+
+	private static int getTime(String in, String out) {
+		String[] IN = in.split(":");
+		String[] OUT = out.split(":");
+		int inHour = Integer.parseInt(IN[0]);
+		int inMin = Integer.parseInt(IN[1]);
+		int outHour = Integer.parseInt(OUT[0]);
+		int outMin = Integer.parseInt(OUT[1]);
+
+		int totalInMin = (inHour * 60) + inMin;
+		int totalOutMin = (outHour * 60) + outMin;
+
+		return totalOutMin - totalInMin;
+	}
+}
