@@ -1,0 +1,48 @@
+import java.util.*;
+import java.io.*;
+
+public class Main1620 {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		HashMap<String, Integer> map = new HashMap<>();
+		String[] arr;
+		
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+		arr = new String[N + 1];
+		
+		for(int i = 1; i <= N; i++) {
+			String str = br.readLine();
+			map.put(str, i);
+			arr[i] = str;
+		}
+		
+		for(int i = 0; i < M; i++) {
+			String input = br.readLine();
+			
+			if(isStringNumber(input)) {
+				int index = Integer.parseInt(input);
+				bw.append(arr[index] + "\n");
+			}
+			else {
+				bw.append(map.get(input) + "\n");
+			}
+		}
+		
+		bw.flush();
+		bw.close();
+		br.close();
+	}
+	
+	private static boolean isStringNumber(String input) {
+		try {
+			Double.parseDouble(input);
+			return true;
+		}
+		catch (NumberFormatException e) {
+			return false;
+		}
+	}
+}
