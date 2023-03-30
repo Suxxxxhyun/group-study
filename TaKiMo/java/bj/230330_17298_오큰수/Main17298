@@ -1,0 +1,39 @@
+import java.util.*;
+import java.io.*;
+
+public class Main17298 {
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st;
+		int N = Integer.parseInt(br.readLine());
+		int[] answer = new int[N];
+
+		st = new StringTokenizer(br.readLine());
+		Stack<Integer> stack = new Stack<>();
+
+		for (int i = 0; i < N; i++) {
+			answer[i] = Integer.parseInt(st.nextToken());
+		}
+
+		for (int i = 0; i < N; i++) {
+			while (!stack.isEmpty() && answer[stack.peek()] < answer[i]) {
+				answer[stack.pop()] = answer[i];
+			}
+
+			stack.push(i);
+		}
+
+		while (!stack.isEmpty()) {
+			answer[stack.pop()] = -1;
+		}
+		
+		for (int i : answer) {
+			bw.append(i + " ");
+		}
+
+		bw.flush();
+		bw.close();
+		br.close();
+	}
+}
