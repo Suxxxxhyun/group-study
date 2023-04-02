@@ -19,6 +19,7 @@ public class BOJ_15652_230402 {
         arr = new int[M];
 
         dfs( 1, 0);
+
         System.out.println(sb);
     }
 
