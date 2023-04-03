@@ -1,8 +1,6 @@
-NM=input().split()
-start=input().split()
-n,m=int(NM[0]),int(NM[1])
-r,c,d=int(start[0]),int(start[1]),int(start[2])
-room=[input().split() for _ in range(n)]
+n,m=map(int,input().split())
+r,c,d=map(int,input().split())
+room=[list(map(int,input().split())) for _ in range(n)]
 move=[(-1,0),(0,1),(1,0),(0,-1)]
 
 while room[r][c]!='1':
