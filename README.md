@@ -53,6 +53,42 @@
     | Thur | KAKAO 기출 |
 </details>
 
+<details>
+<summary>4월</summary>
+
+<!-- summary 아래 한칸 공백 두어야함 -->
+## 4월
+- 1주차
+    
+    
+    | Day | Category |
+    | :---: | :---: |
+    | Mon,Tue | 문자열,구현 |
+    | Wen,Fri | 구현 |
+    | Thur | KAKAO 기출 |
+   
+- 2주차
+    | Day | Category |
+    | :---: | :---: |
+    | Mon,Tue | Tree |
+    | Wen,Fri | 구현 |
+    | Thur | KAKAO 기출 |
+    
+- 3주차
+    | Day | Category |
+    | :---: | :---: |
+    | Mon,Tue | Tree |
+    | Wen,Fri | 구현 |
+    | Thur | KAKAO 기출 |
+    
+- 4주차
+    | Day | Category |
+    | :---: | :---: |
+    | Mon,Tue | 복습 |
+    | Wen,Fri | 구현 |
+    | Thur | KAKAO 기출 |
+</details>
+
   
 
 ## 3. 사용방법
