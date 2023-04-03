@@ -12,7 +12,7 @@ while room[r][c]!='1':
 
     check=0
 
-    #반시계방향으로 체크
+    #반시계방향 체크
     for i in range(1,5):
         nd=d-i if d>=i else 4+(d-i)
         nr=r+move[nd][0]
