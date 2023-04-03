@@ -1,25 +1,20 @@
 import collections
 def solution(msg):
     answer = []
-    dic={}
-    for i in range(26):
-        dic[chr(65+i)]=i+1
+    dic={chr(64+i):i for i in range(1,27)}
         
     msg=list(msg)
     msg.reverse()
     
     w=''
-    zip=0
     while msg:
-        w+=msg.pop()
-        if w in dic:
-            zip=dic[w]
-        else:
-            answer.append(zip)
-            dic[w]=len(dic)+1
-            msg.append(w[-1])
+        c=msg.pop()
+        if w+c not in dic:
+            answer.append(dic[w])
+            dic[w+c]=len(dic)+1
             w=''
-            zip=0
+        w+=c
     answer.append(dic[w])
+
     return answer
             
