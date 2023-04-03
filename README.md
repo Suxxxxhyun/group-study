@@ -17,6 +17,11 @@
 코딩테스트 대비 코드 공유 레포입니다.
 
 ## 2. 진도
+<details>
+<summary>3월</summary>
+
+<!-- summary 아래 한칸 공백 두어야함 -->
+## 3월
 - 1주차
     
     
@@ -46,6 +51,8 @@
     | Mon,Tue | 복습 |
     | Wen,Fri | 구현 |
     | Thur | KAKAO 기출 |
+</details>
+
   
 
 ## 3. 사용방법
