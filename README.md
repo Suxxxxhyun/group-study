@@ -63,9 +63,8 @@
     
     | Day | Category |
     | :---: | :---: |
-    | Mon,Tue | 문자열,구현 |
-    | Wen,Fri | 구현 |
-    | Thur | KAKAO 기출 |
+    | Mon,Wen | 문자열,구현 |
+    | Thr,Sat | 그래프탐색 |
    
 - 2주차
     | Day | Category |
