@@ -1,0 +1,80 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	static int[][] map;
+	static int N, M, R;
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		R = Integer.parseInt(st.nextToken());
+
+		map = new int[N][M];
+
+		for (int i = 0; i < N; i++) {
+			st = new StringTokenizer(br.readLine());
+			for (int j = 0; j < M; j++) {
+				map[i][j] = Integer.parseInt(st.nextToken());
+			}
+		}
+
+		// R을 줄이는 게 핵심
+		// i번째 벨트마다 변하는 회전 수를 계산 할 수 있어야 함
+		int n = N;
+		int m = M;
+		int cnt = Math.min(N, M) / 2;
+		for (int i = 0; i < cnt; i++) {
+			rotateMap(i, 2 * n + 2 * m - 4);
+			// 안쪽 벨트로 이동할 떄마다 위아래/죄우 양쪽으로 2칸씩 줄어듦: -= 2;
+			n -= 2;
+			m -= 2;
+		}
+
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				bw.append(map[i][j] + " ");
+			}
+			bw.append("\n");
+		}
+
+		bw.flush();
+		bw.close();
+		br.close();
+	}
+
+	private static void rotateMap(int start, int len) {
+		int rlen = R % len;
+
+		int[] dx = { 0, 1, 0, -1 };
+		int[] dy = { 1, 0, -1, 0 };
+
+		// 바깥부터 안쪽으로 벹트 선정
+		// i번쨰 벨트
+		for (int i = 0; i < rlen; i++) {
+			int x = start;
+			int y = start;
+			int tmp = 0;
+			int pre = map[start][start];
+			int idx = 0;
+
+			while (idx < 4) {
+				int xx = x + dx[idx];
+				int yy = y + dy[idx];
+
+				if (xx >= start && yy >= start && xx < M - start && yy < N - start) {
+					tmp = map[yy][xx];
+					map[yy][xx] = pre;
+					pre = tmp;
+					x = xx;
+					y = yy;
+				} else
+					idx++;
+			}
+		}
+	}
+}
