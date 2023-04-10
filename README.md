@@ -28,14 +28,15 @@
     | Day | Category |
     | :---: | :---: |
     | Mon,Tue | DFS/BFS |
-    | Wen,Fri | 구현 |
+    | Wen, Fri | 구현 |
     | Thur | KAKAO 기출 |
+    
    
 - 2주차
     | Day | Category |
     | :---: | :---: |
     | Mon,Tue | Tree |
-    | Wen,Fri | 구현 |
+    | Wen, Fri | 구현 |
     | Thur | KAKAO 기출 |
     
 - 3주차
@@ -69,9 +70,8 @@
 - 2주차
     | Day | Category |
     | :---: | :---: |
-    | Mon,Tue | Tree |
-    | Wen,Fri | 구현 |
-    | Thur | KAKAO 기출 |
+    | Mon,Tue | 배열돌리기 |
+    | Wen,Fri | 이분탐색,투포인터 |
     
 - 3주차
     | Day | Category |
