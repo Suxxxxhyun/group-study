@@ -70,8 +70,8 @@
 - 2주차
     | Day | Category |
     | :---: | :---: |
-    | Mon,Tue | 배열돌리기 |
-    | Wen,Fri | 이분탐색,투포인터 |
+    | Mon ~ Wen| 배열돌리기/이분탐색/투포인터|
+    | Thr,Fri | 완전탐색 |
     
 - 3주차
     | Day | Category |
