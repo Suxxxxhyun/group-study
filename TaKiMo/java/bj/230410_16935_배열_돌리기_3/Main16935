@@ -1,0 +1,227 @@
+import java.util.*;
+import java.io.*;
+
+public class Main16935 {
+	static int[][] map;
+	static int N, M, R;
+
+	// O(N * M * R);
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
+		R = Integer.parseInt(st.nextToken());
+
+		map = new int[N][M];
+
+		for (int i = 0; i < N; i++) {
+			st = new StringTokenizer(br.readLine());
+			for (int j = 0; j < M; j++) {
+				map[i][j] = Integer.parseInt(st.nextToken());
+			}
+		}
+
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < R; i++) {
+			int tmp = Integer.parseInt(st.nextToken());
+
+			if (tmp == 1)
+				oper1st();
+			else if (tmp == 2)
+				oper2nd();
+			else if (tmp == 3)
+				oper3rd();
+			else if (tmp == 4)
+				oper4th();
+			else if (tmp == 5)
+				oper5th();
+			else if (tmp == 6)
+				oper6th();
+		}
+
+		for (int i = 0; i < map.length; i++) {
+			for (int j = 0; j < map[i].length; j++) {
+				bw.append(map[i][j] + " ");
+			}
+			bw.append("\n");
+		}
+
+		bw.flush();
+		bw.close();
+		br.close();
+	}
+
+	// 상하반전
+	private static void oper1st() {
+		for (int i = 0; i < N / 2; i++) {
+			int[] tmp = map[N - i - 1];
+			map[N - i - 1] = map[i];
+			map[i] = tmp;
+		}
+	}
+
+	// 좌우반전
+	private static void oper2nd() {
+		for (int i = 0; i < M / 2; i++) {
+			int[] tmp = new int[N];
+
+			for (int j = 0; j < N; j++) {
+				tmp[j] = map[j][i];
+			}
+
+			for (int j = 0; j < N; j++) {
+				map[j][i] = map[j][M - 1 - i];
+			}
+
+			for (int j = 0; j < N; j++) {
+				map[j][M - 1 - i] = tmp[j];
+			}
+		}
+
+//		int[][] tmp = new int[M][N];
+//
+//		for (int i = 0; i < M; i++) {
+//			for (int j = 0; j < N; j++) {
+//				tmp[j][i] = map[M - j][i];
+//				System.out.println("tmp[" + i + "][" + j + "]: " + tmp[i][j]);
+//			}
+//		}
+//
+//		map = tmp;
+
+	}
+
+	// 우향 90
+	private static void oper3rd() {
+		int[][] tmp = new int[M][N];
+
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+//				if(i == 0) {
+//					System.out.println("map[" + i + "][" + j + "]");
+//					System.out.println("tmp[" + (M - 1 - j) + "][" + i + "]");
+//					System.out.println("---------------------");
+//				}
+				tmp[j][i] = map[N - 1 - i][j];
+			}
+		}
+
+		int num = N;
+		N = M;
+		M = num;
+
+		map = tmp;
+	}
+
+	// 좌향 90
+	private static void oper4th() {
+
+		int[][] tmp = new int[M][N];
+
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < M; j++) {
+				tmp[M - 1 - j][i] = map[i][j];
+//				if(i == 0) {
+//					System.out.println("map[" + i + "][" + j + "]");
+//					System.out.println("tmp[" + (M - 1 - j) + "][" + i + "]");
+//					System.out.println("---------------------");
+//				}
+			}
+		}
+
+		int num = N;
+		N = M;
+		M = num;
+
+		map = tmp;
+	}
+
+	// 4분할 우향
+	// A, B, C, D, tmp
+	private static void oper5th() {
+		int rowMid = N / 2;
+		int colMid = M / 2;
+		int[][] tmp = new int[rowMid][colMid];
+
+		// A -> tmp
+		for (int i = 0; i < rowMid; i++) {
+			for (int j = 0; j < colMid; j++) {
+				tmp[i][j] = map[i][j];
+			}
+		}
+
+		// C -> A
+		for (int i = 0; i < rowMid; i++) {
+			for (int j = 0; j < colMid; j++) {
+				map[i][j] = map[i + rowMid][j];
+			}
+		}
+
+		// D -> C
+		for (int i = 0; i < rowMid; i++) {
+			for (int j = 0; j < colMid; j++) {
+				map[i + rowMid][j] = map[i + rowMid][j + colMid];
+			}
+		}
+
+		// B -> D
+		for (int i = 0; i < rowMid; i++) {
+			for (int j = 0; j < colMid; j++) {
+
+				map[i + rowMid][j + colMid] = map[i][j + colMid];
+			}
+		}
+
+		// tmp -> B
+		for (int i = 0; i < rowMid; i++) {
+			for (int j = 0; j < colMid; j++) {
+				map[i][j + colMid] = tmp[i][j];
+			}
+		}
+	}
+
+	// 4분할 좌향
+	private static void oper6th() {
+		int rowMid = N / 2;
+		int colMid = M / 2;
+		int[][] tmp = new int[rowMid][colMid];
+
+		// tmp -> A
+		for (int i = 0; i < rowMid; i++) {
+			for (int j = 0; j < colMid; j++) {
+				tmp[i][j] = map[i][j];
+			}
+		}
+
+		// B -> A
+		for (int i = 0; i < rowMid; i++) {
+			for (int j = 0; j < colMid; j++) {
+				map[i][j] = map[i][j + colMid];
+			}
+		}
+
+		// D -> B
+		for (int i = 0; i < rowMid; i++) {
+			for (int j = 0; j < colMid; j++) {
+				map[i][j + colMid] = map[i + rowMid][j + colMid];
+			}
+		}
+
+		// C -> D
+		for (int i = 0; i < rowMid; i++) {
+			for (int j = 0; j < colMid; j++) {
+				map[i + rowMid][j + colMid] = map[i + rowMid][j];
+			}
+		}
+
+		// tmp -> C
+		for (int i = 0; i < rowMid; i++) {
+			for (int j = 0; j < colMid; j++) {
+				map[i + rowMid][j] = tmp[i][j];
+			}
+		}
+	}
+}
