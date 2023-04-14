@@ -66,12 +66,14 @@
     | :---: | :---: |
     | Mon,Wen | 문자열,구현 |
     | Thr,Sat | 그래프탐색 |
+    | Sun | 삼성역량테스트 |
    
 - 2주차
     | Day | Category |
     | :---: | :---: |
     | Mon ~ Wen| 배열돌리기/이분탐색/투포인터|
     | Thr,Fri | 완전탐색 |
+    | Sat | Naver |
     
 - 3주차
     | Day | Category |
