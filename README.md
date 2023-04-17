@@ -42,7 +42,7 @@
 - 3주차
     | Day | Category |
     | :---: | :---: |
-    | Mon,Tue |  |
+    | Mon,Tue | Tree |
     | Wen, Fri | 구현 |
     | Thur | KAKAO 기출 |
     
