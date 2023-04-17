@@ -1,0 +1,59 @@
+import java.util.*;
+
+class Solution {
+    static HashMap<String, Integer> map = new HashMap<>();
+    
+    public String solution(String[] survey, int[] choices) {
+		String answer = "";
+		String[] type = { "R", "T", "C", "F", "J", "M", "A", "N" };
+
+		for (int i = 0; i < type.length; i++) {
+			map.put(type[i], 0);
+		}
+
+		for (int i = 0; i < choices.length; i++) {
+			scoring(survey[i], choices[i]);
+		}
+
+		answer = printType(type);
+		
+		return answer;
+	}
+
+	private static void scoring(String survey, int choice) {
+		String fst = survey.split("")[0];
+		String scd = survey.split("")[1];
+
+		if (4 == choice) {
+			return;
+
+		} else if (4 > choice) {
+			int value = 4 - choice;
+			map.put(fst, map.getOrDefault(fst, 0) + value);
+
+		} else {
+			int value = choice - 4;
+			map.put(scd, map.getOrDefault(scd, 0) + value);
+		}
+	}
+
+	private static String printType(String[] type) {
+		StringBuffer sb = new StringBuffer();
+		
+		for (int i = 0; i < map.size(); i++) {
+			if(0 == i % 2) {
+				String fst = type[i];
+				String scd = type[i + 1];
+				
+				if(map.get(fst) < map.get(scd))
+					sb.append(scd);
+				else
+					sb.append(fst);
+			}
+		}
+
+		String tmp = sb.toString();
+
+		return tmp;
+	}
+}
