@@ -42,9 +42,7 @@
 - 3주차
     | Day | Category |
     | :---: | :---: |
-    | Mon,Tue | Tree |
-    | Wen,Fri | 구현 |
-    | Thur | KAKAO 기출 |
+    | 중간고사 |
     
 - 4주차
     | Day | Category |
