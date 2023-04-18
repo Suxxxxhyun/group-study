@@ -1,0 +1,38 @@
+
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.*;
+
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		int n = Integer.parseInt(br.readLine());
+		int[] questions = new int[n];
+		
+		st = new StringTokenizer(br.readLine());
+		for(int i = 0; i < n; i++) {
+			questions[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		Arrays.sort(questions);
+		
+		int cnt = 1;
+		int before = questions[0];
+		for(int i : questions) {
+			if(before != i)
+				cnt++;
+			else if (cnt == 3)
+				break;
+			
+			before = i;
+		}
+		
+		if(cnt < 3)
+			System.out.print("NO");
+		else
+			System.out.print("YES");
+	}
+}
