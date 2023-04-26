@@ -18,6 +18,7 @@ public class SWEA_1989_230426 {
                 System.out.println("#" + i + " " + 1);
             } else {
                 System.out.println("#" + i + " " + 0);
+
             }
         }
     }
