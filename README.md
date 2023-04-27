@@ -83,9 +83,8 @@
 - 4주차
     | Day | Category |
     | :---: | :---: |
-    | Mon,Tue | 복습 |
-    | Wen,Fri | 구현 |
-    | Thur | KAKAO 기출 |
+    | Thur,Fri | DP |
+
 </details>
 
   
