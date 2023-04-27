@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st;
+		// n = 시즌 한정 쿠폰 (최소 5개)
+		// m = 일반 음료 쿠폰 (최소 7개)
+		
+		int tc = Integer.parseInt(br.readLine());
+		
+		for(int i = 0; i < tc; i++) {
+			st = new StringTokenizer(br.readLine());
+			
+			long n = Long.parseLong(st.nextToken());
+			long m = Long.parseLong(st.nextToken());
+			
+			bw.append(Math.min((n + m) / 12, n / 5) + "");
+			bw.append("\n");
+		}
+		
+		bw.flush();
+		bw.close();
+		br.close();
+	}
+}

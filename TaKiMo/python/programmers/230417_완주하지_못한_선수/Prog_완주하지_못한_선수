@@ -1,0 +1,13 @@
+def solution(participant, completion):
+    # key로 hash를 사용하는 Dictionary
+    hashDict = {}
+    sumHash = 0
+    
+    for part in participant:
+        hashDict[hash(part)] = part
+        sumHash += hash(part)
+        
+    for comp in completion:
+        sumHash -= hash(comp)
+        
+    return hashDict[sumHash]

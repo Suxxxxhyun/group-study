@@ -1,0 +1,43 @@
+import java.util.*;
+
+class Solution {
+
+	Set<Integer> set = new HashSet<Integer>();
+
+	public int solution(String numbers) {
+		int answer = 0;
+
+		recur("", numbers);
+
+		for (int str : set) {
+			int tmp = str;
+			if (isPrime(tmp)) answer++;
+		}
+
+		return answer;
+	}
+
+	public void recur(String comb, String rest) {
+		if (!comb.equals("")) {
+			int tmp = Integer.parseInt(comb);
+			set.add(tmp);
+		}
+
+		for (int i = 0; i < rest.length(); i++) {
+			recur(comb + rest.charAt(i), rest.substring(0, i) + rest.substring(i + 1));
+		}
+	}
+
+	public boolean isPrime(int tmp) {
+		int num = tmp;
+
+		if(1 >= num) return false;
+		
+		for (int i = 2; i * i <= num; i++) {
+			if (0 == num % i)
+				return false;
+		}
+
+		return true;
+	}
+}
