@@ -1,0 +1,70 @@
+import java.util.*;
+import java.io.*;
+
+public class Main4195 {
+	static int[] arr;
+	static int[] cnt;
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st;
+
+		int tc = Integer.parseInt(br.readLine());
+		for (int i = 0; i < tc; i++) {
+			int F = Integer.parseInt(br.readLine());
+			arr = new int[2 * F];
+			cnt = new int[2 * F];
+			Map<String, Integer> map = new HashMap<>();
+			int idx = 0;
+
+			for (int j = 0; j < 2 * F; j++) {
+				arr[j] = j;
+				cnt[j] = 1;
+			}
+
+			for (int j = 0; j < F; j++) {
+				st = new StringTokenizer(br.readLine());
+
+				String fst = st.nextToken();
+				String scd = st.nextToken();
+
+				if (!map.containsKey(fst))
+					map.put(fst, idx++);
+				if (!map.containsKey(scd))
+					map.put(scd, idx++);
+
+				int fstIdx = map.get(fst);
+				int scdIdx = map.get(scd);
+				union(fstIdx, scdIdx);
+
+				bw.append(cnt[find(fstIdx)] + "\n");
+			}
+		}
+
+		bw.flush();
+		bw.close();
+		br.close();
+	}
+
+	private static int find(int num) {
+		if (arr[num] == num)
+			return num;
+		return arr[num] = find(arr[num]);
+	}
+
+	private static void union(int a, int b) {
+		int aRoot = find(a);
+		int bRoot = find(b);
+
+		if (aRoot < bRoot) {
+			arr[bRoot] = aRoot;
+			cnt[aRoot] += cnt[bRoot];
+			cnt[bRoot] = 0;
+		} else if (aRoot > bRoot) {
+			arr[aRoot] = bRoot;
+			cnt[bRoot] += cnt[aRoot];
+			cnt[aRoot] = 0;
+		}
+	}
+}
