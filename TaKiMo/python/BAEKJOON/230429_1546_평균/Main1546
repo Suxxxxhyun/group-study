@@ -1,0 +1,17 @@
+# 파이썬 input()은 문자열 자료형
+# 다른 자료형으로 사용하려면 형변환 필요
+n = input()
+# map(function, iterable)
+# 두번째 인자로 들어온 반복 자료형을
+# 첫번째 인자로 들어온 함수에
+# map의 자료형은 map이어서 
+# 필요에 따라 list 혹은 tuple로 형 변환
+# 파이썬의 map은 자바의 map과 다름
+# 자바의 map == 파이썬의 dict
+# 파이썬 map은 반복 기능으르 수행하는 함
+mylist = list(map(int, input().split()))
+# list에서 최대값 찾는 함수 max()
+myMax = max(mylist)
+sum = sum(mylist)
+
+print(sum / myMax * 100 / int(n))
