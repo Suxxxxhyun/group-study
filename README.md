@@ -87,6 +87,39 @@
 
 </details>
 
+<details>
+<summary>4월</summary>
+
+<!-- summary 아래 한칸 공백 두어야함 -->
+## 5월
+- 1주차
+    
+    
+    | Day | Category |
+    | :---: | :---: |
+    | Mon,Wen | DP |
+    | Thr,Sat | 그래프탐색 |
+    | Sun | 삼성역량테스트 |
+   
+- 2주차
+    | Day | Category |
+    | :---: | :---: |
+    | Mon ~ Wen| 배열돌리기/이분탐색/투포인터|
+    | Thr,Fri | 완전탐색 |
+    | Sat | Naver |
+    
+- 3주차
+    | Day | Category |
+    | :---: | :---: |
+    | 중간고사 |
+    
+- 4주차
+    | Day | Category |
+    | :---: | :---: |
+    | Thur,Fri | DP |
+
+</details>
+
   
 
 ## 3. 사용방법
