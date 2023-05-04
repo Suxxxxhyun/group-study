@@ -1,0 +1,26 @@
+N = int(input())
+
+stack = []
+answer = []
+result = True
+now = 1
+
+for i in range(N):
+    num = int(input())
+        
+    while now <= num:
+        stack.append(now)
+        answer.append("+")
+        now += 1
+        
+    if stack[-1] == num:
+        stack.pop()
+        answer.append("-")
+    else:
+        print("NO")
+        result = False
+        break
+
+if result:
+    for i in answer:
+        print(i)
