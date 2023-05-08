@@ -3,7 +3,7 @@
 ### 목차
 [개요](#1-개요)
 
-[진도](#2-진도)
+[기업별 코테 일정](#2-기업별-코테-일정)
 
 [사용방법](#3-사용방법)
 
@@ -16,109 +16,13 @@
 
 코딩테스트 대비 코드 공유 레포입니다.
 
-## 2. 진도
-<details>
-<summary>3월</summary>
+## 2. 기업별 코테 일정
+|기업|일정|
+|:-----:|:-----:|
+|Samung|4월 9일|
+|NAVER|4월 15일|
+|우테캠|5월 6일|
 
-<!-- summary 아래 한칸 공백 두어야함 -->
-## 3월
-- 1주차
-    
-    
-    | Day | Category |
-    | :---: | :---: |
-    | Mon,Tue | DFS/BFS |
-    | Wen, Fri | 구현 |
-    | Thur | KAKAO 기출 |
-    
-   
-- 2주차
-    | Day | Category |
-    | :---: | :---: |
-    | Mon,Tue | Tree |
-    | Wen, Fri | 구현 |
-    | Thur | KAKAO 기출 |
-    
-- 3주차
-    | Day | Category |
-    | :---: | :---: |
-    | Mon,Tue | Tree |
-    | Wen, Fri | 구현 |
-    | Thur | KAKAO 기출 |
-    
-- 4주차
-    | Day | Category |
-    | :---: | :---: |
-    | Mon,Tue | 복습 |
-    | Wen,Fri | 구현 |
-    | Thur | KAKAO 기출 |
-</details>
-
-<details>
-<summary>4월</summary>
-
-<!-- summary 아래 한칸 공백 두어야함 -->
-## 4월
-- 1주차
-    
-    
-    | Day | Category |
-    | :---: | :---: |
-    | Mon,Wen | 문자열,구현 |
-    | Thr,Sat | 그래프탐색 |
-    | Sun | 삼성역량테스트 |
-   
-- 2주차
-    | Day | Category |
-    | :---: | :---: |
-    | Mon ~ Wen| 배열돌리기/이분탐색/투포인터|
-    | Thr,Fri | 완전탐색 |
-    | Sat | Naver |
-    
-- 3주차
-    | Day | Category |
-    | :---: | :---: |
-    | 중간고사 |
-    
-- 4주차
-    | Day | Category |
-    | :---: | :---: |
-    | Thur,Fri | DP |
-
-</details>
-
-<details>
-<summary>5월</summary>
-
-<!-- summary 아래 한칸 공백 두어야함 -->
-## 5월
-- 1주차
-    
-    
-    | Day | Category |
-    | :---: | :---: |
-    | Mon,Wen | DP |
-    | Thr,Sat | 그래프탐색 |
-    | Sun | 삼성역량테스트 |
-   
-- 2주차
-    | Day | Category |
-    | :---: | :---: |
-    | Mon ~ Wen| 배열돌리기/이분탐색/투포인터|
-    | Thr,Fri | 완전탐색 |
-    | Sat | Naver |
-    
-- 3주차
-    | Day | Category |
-    | :---: | :---: |
-    | 중간고사 |
-    
-- 4주차
-    | Day | Category |
-    | :---: | :---: |
-    | Thur,Fri | DP |
-
-</details>
 
   
 
