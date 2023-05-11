@@ -19,7 +19,7 @@ public class SWEA_11315_230511 {
 
             for (int j = 0; j < N; j++) {
                 String str = br.readLine();
-                for (int k = 0; k < N; k++) {
+                for (int k = 0; k < str.length(); k++) {
                     arr[j][k] = str.charAt(k);
                 }
             }
@@ -38,35 +38,37 @@ public class SWEA_11315_230511 {
                 if (arr[k][j] == 'o') colCnt++;
                 else colCnt = 0;
 
-                if (rowCnt >= 5 || colCnt >= 5) {
-                    return "YES";
+//                if (rowCnt >= 5 || colCnt >= 5) {
+//                    return "YES";
+//                }
+            }
+
+        }
+
+        int start = 0;
+        int end = 0;
+        while (start != N) {
+            for (int j = end; j < N; j++) {
+                int LCnt = 0;
+                int RCnt = 0;
+                int Ldiag = j;
+                int Rdiag = (N - 1) - j;
+                for (int k = start; k <= j; k++) {
+                    if (arr[k][Ldiag] == 'o') LCnt++;
+                    else LCnt = 0;
+                    if (arr[k][Rdiag] == 'o') RCnt++;
+                    else RCnt = 0;
+
+                    System.out.println(k + " " + Rdiag);
+//                    if (LCnt >= 5 || RCnt >= 5) {
+//                        return "YES";
+//                    }
+                    Ldiag--;
+                    Rdiag++;
                 }
             }
-
-        }
-
-        int Ldiag = 0;
-        int Rdiag = 0;
-        int Y = N - 1;
-        for (int k = 0; k < N; k++) {
-            if (arr[k][k] == 'o') Ldiag++;
-            else Ldiag = 0;
-            if (arr[k][Y] == 'o') Rdiag++;
-            else Rdiag = 0;
-
-            if (Ldiag >= 5 || Rdiag >= 5) {
-                return "YES";
-            }
-
-            Y--;
-        }
-
-        for (int j = 0; j < N; j++) {
-            for (int k = 0; k < j; k++) {
-                if (arr[k][j] == 'o') Ldiag++;
-                else Ldiag = 0;
-            }
-
+            end = N - 1;
+            start++;
         }
 
         return "NO";
