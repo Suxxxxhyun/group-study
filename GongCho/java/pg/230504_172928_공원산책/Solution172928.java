@@ -1,105 +1,114 @@
-package Level1;
+package Programmers;
 
-//10:36 ~ 11:10
-//ë‚˜ë„ mapì„ ë”°ë¡œ ë§Œë“¤ì§€ ì•Šê³  ì ‘ê·¼í•´ë³´ì.
+//1:40 ~ 2:10
+//bfs¹æ½ÄÀ¸·Î ÇØº¼±î?
 import java.util.*;
 
-public class Solution172928 {
-
-    int[] answer;
-    int[][] dir = {{-1,0},{1,0},{0,-1},{0,1}};
-    Node Robot = null;
-
-    class Node{
-        int x, y;
-
-        public Node(int x, int y){
-            this.x = x;
-            this.y = y;
-        }
-    }
-
-    public int[] solution(String[] park, String[] routes) {
-
-        for(int i=0; i<park.length; i++){
-            for(int j=0; j<park[i].length(); j++){
-                if(park[i].charAt(j) == 'S'){
-                    Robot = new Node(i,j);
-                    break;
-                }
-            }
-        }
-
-        move(park, routes);
-        answer = new int[2];
-        answer[0] = Robot.x;
-        answer[1] = Robot.y;
-        return answer;
-    }
-
-    void move(String[] park, String[] routes){
-        for(int i=0; i<routes.length; i++){
-            int x = Robot.x, y = Robot.y;
-            int nx = x, ny = y;
-            if(routes[i].charAt(0) == 'E'){
-                int cnt = routes[i].charAt(2) - '0';
-                for(int j=0; j<cnt; j++){
-                    nx += dir[3][0];
-                    ny += dir[3][1];
-
-                    if(!isCan(nx, ny, park)){
-                        nx = x;
-                        ny = y;
-                        break;
-                    }
-                }
-            } else if(routes[i].charAt(0) == 'S'){
-                int cnt = routes[i].charAt(2) - '0';
-                for(int j=0; j<cnt; j++){
-                    nx += dir[1][0];
-                    ny += dir[1][1];
-                    if(!isCan(nx, ny, park)){
-                        nx = x;
-                        ny = y;
-                        break;
-                    }
-                }
-            } else if(routes[i].charAt(0) == 'W'){
-                int cnt = routes[i].charAt(2) - '0';
-                for(int j=0; j<cnt; j++){
-                    nx += dir[2][0];
-                    ny += dir[2][1];
-                    if(!isCan(nx, ny, park)){
-                        nx = x;
-                        ny = y;
-                        break;
-                    }
-                }
-            } else {
-                int cnt = routes[i].charAt(2) - '0';
-                for(int j=0; j<cnt; j++){
-                    nx += dir[0][0];
-                    ny += dir[0][1];
-                    if(!isCan(nx, ny, park)){
-                        nx = x;
-                        ny = y;
-                        break;
-                    }
-                }
-            }
-
-            Robot.x = nx;
-            Robot.y = ny;
-        }
-    }
-
-    boolean isCan(int x, int y, String[] park){
-        if(x < 0 || y < 0 || x >= park.length || y >= park[0].length()){
-            return false;
-        } else if(park[x].charAt(y) == 'X'){
-            return false;
-        } else {
-            return true;
-        }
-    }
+class Solution172928 {
+  
+  int startX = 0, startY = 0;
+  //ºÏ, ³², ¼­, µ¿
+  int[][] dir = {{-1,0},{1,0},{0,-1},{0,1}};
+  char[][] map;
+  class Node{
+      int x, y;
+      
+      public Node(int x, int y){
+          this.x = x;
+          this.y = y;
+      }
+  }
+  
+  public int[] solution(String[] park, String[] routes) {
+      
+      int[] answer = new int[2];
+      map = new char[park.length][park[0].length()];
+      
+      //ÀÔ·Â¹Ş±â
+      input(park);
+      
+      int xx = startX;
+      int yy = startY;
+      int nx = xx;
+      int ny = yy;
+      
+      for(int i=0; i<routes.length; i++){
+          String[] st = routes[i].split(" ");
+          int count = Integer.parseInt(st[1]);
+          boolean isCan = true;
+          if(st[0].equals("E")){
+              for(int j=0; j<count; j++){
+                  xx += dir[3][0];
+                  yy += dir[3][1];
+                  if(!confirm(xx, yy, park)){
+                      isCan = false;
+                      break;
+                  };
+              }
+          } else if(st[0].equals("S")){
+              for(int j=0; j<count; j++){
+                  xx += dir[1][0];
+                  yy += dir[1][1];
+                  if(!confirm(xx, yy, park)){
+                      isCan = false;
+                      break;
+                  };
+              }
+          } else if(st[0].equals("W")){
+              for(int j=0; j<count; j++){
+                  xx += dir[2][0];
+                  yy += dir[2][1];
+                  if(!confirm(xx, yy, park)){
+                      isCan = false; 
+                      break;
+                  };
+              }
+          } else {
+              for(int j=0; j<count; j++){
+                  xx += dir[0][0];
+                  yy += dir[0][1];
+                  if(!confirm(xx, yy, park)){
+                      isCan = false;
+                      break;
+                  };
+              }
+          }
+         //System.out.println(isCan);
+          if(confirm(xx,yy,park) || isCan){
+              nx = xx;
+              ny = yy;
+              //System.out.println("xx = " + xx + ", yy = " + yy);
+          } else {
+              xx = nx;
+              yy = ny;
+          }
+      }
+      
+      answer[0] = xx;
+      answer[1] = yy;
+      return answer;
+  }
+  
+  //¹üÀ§È®ÀÎ + Àå¾Ö¹°È®ÀÎ
+  boolean confirm(int x, int y, String[] park){
+      if(x < 0 || y < 0 || x >= park.length || y >= park[0].length()){
+          return false;
+      } if(map[x][y] == 'X'){
+          return false;
+      } else {
+          return true;   
+      }
+  }
+  
+  void input(String[] park){
+      for(int i=0; i<park.length; i++){
+          for(int j=0; j<park[i].length(); j++){
+              map[i][j] = park[i].charAt(j);
+              if(map[i][j] == 'S'){
+                  startX = i;
+                  startY = j;
+              }
+          }
+      }
+  }
 }
