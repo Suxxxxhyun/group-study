@@ -20,5 +20,6 @@ def dfs():
 for a in range(current_max):
     for b in range(n):
         for c in range(n):
-            if current_max
-            dfs()
+            if current_max:
+                dfs()
+
