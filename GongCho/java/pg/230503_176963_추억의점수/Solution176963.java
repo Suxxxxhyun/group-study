@@ -1,34 +1,26 @@
-package Level1;
+package Programmers;
 
-//7:16 ~ 7:46
-
+//1:22 ~ 1:50
 import java.util.*;
 
 class Solution176963 {
-
-    int[] answer;
-
-    public int[] solution(String[] name, int[] yearning, String[][] photo) {
-
-        answer = new int[photo.length];
-
-        Map<String,Integer> score = new HashMap<String,Integer>();
-
-        for(int i=0; i<name.length; i++){
-            score.put(name[i], yearning[i]);
-        }
-
-        System.out.println(score);
-
-
-        for(int i=0; i<photo.length; i++){
-            for(int j=0; j<photo[i].length; j++){
-                if(score.get(photo[i][j]) == null){
-                    continue;
-                }
-                answer[i] += score.get(photo[i][j]);
-            }
-        }
-        return answer;
-    }
+  
+  public int[] solution(String[] name, int[] yearning, String[][] photo) {
+      
+      int[] answer = new int[photo.length];
+      Map<String, Integer> missing = new HashMap<String, Integer>();
+      for(int i=0; i<name.length; i++){
+          missing.put(name[i], yearning[i]);
+      }
+      
+      for(int i=0; i<photo.length; i++){
+          int sum = 0;
+          for(int j=0; j<photo[i].length; j++){
+              sum += missing.getOrDefault(photo[i][j], 0);
+          }
+          answer[i] = sum;
+      }
+      
+      return answer;
+  }
 }
